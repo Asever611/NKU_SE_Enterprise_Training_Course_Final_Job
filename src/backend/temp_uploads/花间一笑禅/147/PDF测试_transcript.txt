@@ -1,0 +1,144 @@
+机器学习导论
+第2章 线性模型
+2.2 Logistic回归
+谢茂强
+南开大学软件学院
+Logistic回归部分的内容主要来自于吴恩达Coursera网课
+什么是分类(Classification)问题？
+垃圾邮件检测任务: Spam / Not Spam?
+信用卡交易欺诈检测: Fraudulent (Yes / No)?
+肿瘤判定: Malignant (恶性的) / Benign (良性的)?
+0: 负类（Negative Class），有的方法也标注
+为-1
+1: 正类（Positive Class）
+回归和分类任务的区别1
+• 输入相同，输出类型不同
+分类: = 0 or 1 （类别）
+回归: （连续）
+• 分类适用范围更广一些
+• Logistic Regression, LDA, SVM, ANN, 决策树，
+K最近邻…
+线性回归和分类的区别 2
+回归
+500
+400
+300
+200
+100
+0
+0 1000 2000 3000
+价房
+分类
+房屋面积
+判决函数的形式虽都为 ，但对结果的使⽤上不同。
+什么是线性分类器？
+• 分类器的判决函数主体形式为：
+大于等于阈值为
+正例
+X
+小于阈值为负例
+目录
+01.
+Logistic回归
+• 模型表⽰与判别函数
+• 代价函数
+• 基于梯度下降法的模型优化
+02.
+线性判别分析(Linear Discriminative Analysis)
+• 模型表⽰与判别函数
+• 代价函数
+• 基于梯度下降法的模型优化
+6
+Logistic回归简介
+• Logistic Regression由统计学家
+David Cox于1958年提出。
+• D. Cox最著名的成果是1972年的Cox
+Regression，广泛用于生存预测和机
+械故障等
+David Cox(1924-2022)
+David Cox. The regression analysis of binary sequences. Journal of the Royal Statistical Society. 20(2):215-242. 1958
+7
+Logistic回归模型
+• 主要使用sigmoid函数,将线性输
+出 大部分变换到0或1附近
+• Logistic回归模型主体：
+其中，
+1.1 Logistic回归模型的判决函数
+模型判决“ “ 时
+对应地，
+1
+反之，当“ “ 时
+z
+1.1判决边界或判决函数(Decision Boundary, Prediction Model)
+x
+2
+判决边界或预测模型：
+3
+2
+1
+1 2 3 x
+1
+在示例中：
+预测 “ “ 当
+预测 “ “ 当
+1.1 非线性判决函数
+x
+2
+1
+x
+-1 1 1
+Predict “ “ if
+-1
+x
+2
+x
+1
+1.2 Logistic回归的代价函数
+Training set:
+m examples ,
+where
+Model of
+classification:
+How to choose parameters ?
+1.2 Logistic regression cost function
+If y = 1
+0 1
+Logistic regression cost function
+If y = 0
+0 1
+1.2 Logistic regression cost function
+注意：y(i)是样本的标注，只能取值0或1
+• ⺫标：通过 来获得最拟合训练样本的模型参数
+1.2 损失函数 - 交叉熵
+交叉熵主要用于度量两组数据分布间的差异性
+1.2 损失函数 - 交叉熵-信息熵
+信息论：⾹农(Shannon
+)
+信息熵（Information Entropy）是度量样本集合纯度的
+⼀种指标。假定当前样本集合D中第k类样本所占的⽐例
+为p （k = 1,2,...,|Y |)，则D的信息熵定义为：
+k
+Ent(D) 的值越⼩，则D的纯度越⾼。
+见周志华《机器学习》4.2节(P75)
+1.3 优化(最小化代价函数):Gradient Descent
+Want :
+Repeat
+其中，
+(simultaneously update all )
+注意Logistic回归和线性回归的梯度的相似之处和区别
+线性回归的
+附：代价函数相对于模型参数的导数求导过程（共2页）
+
+Logistic回归小结
+• 二类分类
+• 模型表⽰与判别函数
+• 基于交叉熵的损失函数
+• 基于梯度下降的优化算法
+Logistic回归
+D. Cox使用 拟合二类分类数据，经过变换
+可得
+亦被称为对数几率(log odds或logit)，可以表明类别归属
+将y视为类后验概率估计，可得
+使用最大对数似然和训练数据集估计模型参数
+见周志华《机器学习》3.3 对数几率回归
+David Cox. The regression analysis of binary sequences. Journal of the Royal Statistical Society. 20(2):215-242. 1958
